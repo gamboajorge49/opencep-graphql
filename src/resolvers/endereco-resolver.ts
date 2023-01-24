@@ -1,3 +1,4 @@
+import { GraphQLError } from 'graphql';
 import { validarcep } from "../utils";
 
 export const typeDef = `
@@ -36,7 +37,11 @@ async function getendereco(cep:string) {
             return null;
         }    
     } else {
-        return null;
+
+        throw new GraphQLError('Cep inválido', {
+            extensions: { code: 'BAD_USER_INPUT' },
+          });
+        
     }
     
 }
