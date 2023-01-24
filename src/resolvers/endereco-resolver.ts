@@ -1,3 +1,5 @@
+import { validarcep } from "../utils";
+
 export const typeDef = `
   extend type Query {
     endereco(cep:String!):Endereco
@@ -14,26 +16,37 @@ export const typeDef = `
 }    
 `;
 
+
+
+async function getendereco(cep:string) {
+
+    if (validarcep(cep)) {
+        const response = await fetch(`https://raw.githubusercontent.com/SeuAliado/OpenCEP/main/v1/${cep}.json`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+            },
+        });
+    
+        if (response.status == 200) {
+            const object = await response.json();
+            return object;
+    
+        } else {
+            return null;
+        }    
+    } else {
+        return null;
+    }
+    
+}
+
+
+
 export const resolvers = {
     Query: {
-        endereco: async (parent: any, args: any, contextValue: any, info: any) => {
-            console.log(args);
-
-            const response = await fetch(`https://raw.githubusercontent.com/SeuAliado/OpenCEP/main/v1/${args.cep}.json`, {
-                method: 'GET',
-                headers: {
-                    Accept: 'application/json',
-                },
-            });
-
-            if (response.status == 200) {
-
-                const object = await response.json();
-                return object;
-
-            } else {
-                return null;
-            }
+        endereco: async (parent: any, args: any, contextValue: any, info: any) => {            
+            return getendereco(args.cep);            
         },
     }
 };
