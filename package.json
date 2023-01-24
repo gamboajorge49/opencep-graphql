@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsnd --respawn ./src/server.ts"
+    "start": "tsnd --respawn ./src/server.ts",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/lodash": "^4.14.191",
+    "@vitest/coverage-c8": "^0.28.1",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vitest": "^0.28.1"
   },
   "dependencies": {
     "apollo-server": "^3.11.1",
