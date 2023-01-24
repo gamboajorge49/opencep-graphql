@@ -1,2 +1,5 @@
 # opencep-graphql
-implementação do OpenCep em GraphQl
+Implementação do OpenCep em GraphQl
+
+[OpenCep](https://github.com/SeuAliado/OpenCEP)
+
