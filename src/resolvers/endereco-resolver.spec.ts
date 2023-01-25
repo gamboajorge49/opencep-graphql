@@ -8,11 +8,10 @@ describe('endereco resolver', () => {
     })
 
 
-
     test('request ok', async () => {
         var obj = await getendereco('00000000');
         console.log(obj)
-        expect(obj.localidade).toBe('São paulo');
+        expect(obj.localidade).toBe('São Paulo');
 
     })
 
