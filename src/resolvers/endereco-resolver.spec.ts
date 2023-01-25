@@ -9,8 +9,7 @@ describe('endereco resolver', () => {
 
 
     test('request ok', async () => {
-        var obj = await getendereco('00000000');
-        console.log(obj)
+        var obj = await getendereco('01001000');        
         expect(obj.localidade).toBe('São Paulo');
 
     })
