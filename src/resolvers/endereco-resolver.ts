@@ -17,9 +17,7 @@ export const typeDef = `
 }    
 `;
 
-
-
-async function getendereco(cep:string) {
+export async function getendereco(cep: string) {
 
     if (validarcep(cep)) {
         const response = await fetch(`https://raw.githubusercontent.com/SeuAliado/OpenCEP/main/v1/${cep}.json`, {
@@ -28,30 +26,30 @@ async function getendereco(cep:string) {
                 Accept: 'application/json',
             },
         });
-    
+
         if (response.status == 200) {
             const object = await response.json();
             return object;
-    
+
         } else {
             return null;
-        }    
+        }
     } else {
 
         throw new GraphQLError('Cep inválido', {
             extensions: { code: 'BAD_USER_INPUT' },
-          });
-        
+        });
+
     }
-    
+
 }
 
 
 
 export const resolvers = {
     Query: {
-        endereco: async (parent: any, args: any, contextValue: any, info: any) => {            
-            return getendereco(args.cep);            
+        endereco: async (parent: any, args: any, contextValue: any, info: any) => {
+            return getendereco(args.cep);
         },
     }
 };
