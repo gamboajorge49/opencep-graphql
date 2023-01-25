@@ -7,4 +7,13 @@ describe('endereco resolver', () => {
         await expect(() => getendereco('00000000000000000')).rejects.toThrow()
     })
 
+
+
+    test('request ok', async () => {
+        var obj = await getendereco('00000000');
+        console.log(obj)
+        expect(obj.localidade).toBe('São paulo');
+
+    })
+
 })
