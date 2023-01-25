@@ -1,6 +1,5 @@
 import { GraphQLError } from 'graphql';
 import { validarcep } from "../utils";
-import fetch from "node-fetch";
 
 export const typeDef = `
   extend type Query {
